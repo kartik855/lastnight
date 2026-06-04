@@ -1,10 +1,8 @@
-{
-  "name": "lastnight-exam-platform",
-  "version": "1.0.0",
-  "private": true,
-  "description": "LastNight — Smart Exam Preparation Platform",
-  "dependencies": {
-    "openai": "^4.0.0",
-    "razorpay": "^2.9.4"
-  }
+import Razorpay from "razorpay";
+
+export default async function handler(req, res) {
+  return res.status(200).json({
+    keyExists: !!process.env.RAZORPAY_KEY_ID,
+    secretExists: !!process.env.RAZORPAY_KEY_SECRET,
+  });
 }
