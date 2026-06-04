@@ -669,7 +669,7 @@
                 <div class="glass rounded-xl px-4 py-3 text-sm">UPI · GPay / PhonePe / Paytm</div>
                 <div class="glass rounded-xl px-4 py-3 text-sm">Cards · Net banking · Wallets</div>
             </div>
-            <button onclick="completePayment()" id="payBtn" class="w-full py-3 bg-purple-600 rounded-xl font-bold hover:bg-purple-500 transition">Pay securely</button>
+            <button onclick="payNow()" id="payBtn" class="w-full py-3 bg-purple-600 rounded-xl font-bold hover:bg-purple-500 transition">Pay securely</button>
         </div>
     </div>
 
@@ -2196,19 +2196,51 @@
 
         function closeCheckout() { document.getElementById('payModal').classList.add('hidden'); }
 
-        function completePayment() {
-            if (!payTarget) return;
-            state.plan = payTarget;
-            state.credits = { ...DEFAULT_CREDITS };
-            Object.keys(state.credits).forEach(k => state.credits[k] = 999);
-            persist();
-            closeCheckout();
-            closeCreditModal();
-            syncHeader();
-            buildTabs();
-            celebrate('🎉 ' + PLAN_NAME[payTarget] + ' Activated!');
-        }
+        function activatePremium() {
+    if (!payTarget) return;
+    state.plan = payTarget;
+    state.credits = { ...DEFAULT_CREDITS };
+    Object.keys(state.credits).forEach(k => state.credits[k] = 999);
+    persist();
+    closeCheckout();
+    closeCreditModal();
+    syncHeader();
+    buildTabs();
+    celebrate('🎉 ' + PLAN_NAME[payTarget] + ' Activated!');
+}
+        async function payNow() {
 
+    const response =
+        await fetch('/api/create-order');
+
+    const order =
+        await response.json();
+
+    const options = {
+        key: 'rzp_test_Sxc6WDP5c2Pipq',
+
+        amount: order.amount,
+
+        currency: order.currency,
+
+        order_id: order.id,
+
+        name: 'LastNight',
+
+        description: 'Premium Plan',
+
+        handler: function(response) {
+
+            activatePremium();
+
+        }
+    };
+
+    const rzp =
+        new Razorpay(options);
+
+    rzp.open();
+}
         /* ============== CELEBRATE / CONFETTI ============== */
         function celebrate(msg) {
             const el = document.getElementById('celebrate');
