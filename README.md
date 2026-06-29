@@ -1,7 +1,1 @@
-THIS THE CLASSIC AND TRADITIONAL WAY TO GET THE INFORMATION ABOUT THE LAST NIGHT SAAS.
-hi 
-this repo is concern about the last night 
-
-
-
 
