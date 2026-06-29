@@ -34,7 +34,7 @@ Since your old API key was in client-side code, go to [platform.openai.com/api-k
 
 ## How it work
 
-- **Frontend** (`public/index.html`) — The full app. Calls `/api/chat` for AI features.
+- **Frontend** (`public/index.html`) — The full app. Calls `/api/chat`for AI features.
 - **Backend** (`api/chat.js`) — A tiny serverless function that holds your OpenAI API key privately and forwards requests. Users never see the key.
 
 ## Local development
