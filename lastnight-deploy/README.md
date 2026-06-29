@@ -25,7 +25,7 @@
    - **Value:** `sk-proj-your-actual-key-here`
 5. Click **Deploy**
 
-Your site will be live at `https://lastnight-your-username.vercel.app` in ~30 seconds.
+Your site will be live at `https://lastnight-your-username.vercel.app`in ~30 seconds.
 
 ### Step 3: Revoke your old key
 Since your old API key was in client-side code, go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys), delete the old key, and generate a fresh one for the Vercel environment variable.
