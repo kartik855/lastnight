@@ -1,6 +1,6 @@
 # LastNight — Smart Exam Preparation Platform
 
-## Deploy to Vercel (Free)
+## Deploy to Vercel 
 
 ### Step 1: Get the code on GitHub
 1. Go to [github.com/new](https://github.com/new) and create a new repo called `lastnight`
